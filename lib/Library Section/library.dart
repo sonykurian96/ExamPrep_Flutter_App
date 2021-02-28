@@ -1,5 +1,6 @@
 import 'package:clickable_list_wheel_view/clickable_list_wheel_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Library%20Section/videoData.dart';
 
 import 'VideoPage.dart';
 
@@ -9,31 +10,22 @@ class VideoList extends StatefulWidget {
 }
 
 class _VideoListState extends State<VideoList> {
-  List<String> list = [
-    'Introduction to Data Structures',
-    'Linked list',
-    'Graphs',
-    'Heaps',
-    'Sorting Techniques',
-    'Stack',
-    'Queue',
-    'Tree'
-  ];
-
-  List<String> videoList = [
-    "https://youtu.be/bum_19loj9A", // introduction
-    "https://youtu.be/_jQhALI4ujg", // linked list
-    "https://youtu.be/D21-XVw6nYw", // graphs
-    "https://youtu.be/2DmK_H7IdTo", // heaps
-    "https://youtu.be/kgBjXUE_Nwc", // sorting techniques
-    "https://youtu.be/bxRVz8zklWM", // stack
-    "https://youtu.be/zp6pBNbUB2U", // queue
-    "https://youtu.be/YAdLFsTG70w" // tree
-  ];
 
   final _scrollController = FixedExtentScrollController();
   static const double _itemHeight = 60;
   static const int _itemCount = 8;
+
+  List<VideoData> _videoData =[
+    VideoData(title: "Introduction to Data Structures",videoLink: "https://youtu.be/bum_19loj9A"),
+    VideoData(title: "Linked list",videoLink: "https://youtu.be/_jQhALI4ujg"),
+    VideoData(title: "Graphs",videoLink: "https://youtu.be/D21-XVw6nYw"),
+    VideoData(title: "Heaps",videoLink: "https://youtu.be/2DmK_H7IdTo"),
+    VideoData(title: "Sorting Techniques",videoLink: "https://youtu.be/kgBjXUE_Nwc"),
+    VideoData(title: "Stack",videoLink: "https://youtu.be/bxRVz8zklWM"),
+    VideoData(title: "Queue",videoLink: "https://youtu.be/zp6pBNbUB2U"),
+    VideoData(title: "Tree",videoLink: "https://youtu.be/YAdLFsTG70w"),
+  ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +41,7 @@ class _VideoListState extends State<VideoList> {
                 MaterialPageRoute(
                   builder: (context) => VideoPage(),
                   settings: RouteSettings(
-                  arguments: videoList[index],
+                  arguments: _videoData[index].videoLink,
                   ),
                 )
               );
@@ -78,7 +70,7 @@ class _VideoListState extends State<VideoList> {
         ),
         child: ListTile(
           title: Text(
-            list[index],
+            _videoData[index].title,
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           leading: Icon(

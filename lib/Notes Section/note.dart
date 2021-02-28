@@ -1,34 +1,23 @@
 import 'package:clickable_list_wheel_view/clickable_list_wheel_widget.dart';
 import 'package:flutter/material.dart';
 import "NotesPage.dart";
+import 'noteData.dart';
 
-class Note extends StatefulWidget {
-  @override
-  _NoteState createState() => _NoteState();
-}
+class Note extends StatelessWidget {
 
-class _NoteState extends State<Note> {
-  List<String> list = [
-    'Arrays',
-    'Linked list',
-    'Stacks',
-    'Queues',
-    'Trees',
-    'Heaps',
-    'Graphs',
-    'Hash Tables'
-  ];
 
-  List<String> noteList = [
-    "https://www.thedshandbook.com/arrays/",
-    "https://www.thedshandbook.com/linked-lists/",
-    "https://www.thedshandbook.com/stacks/",
-    "https://www.thedshandbook.com/queues/",
-    "https://www.thedshandbook.com/trees/",
-    "https://www.thedshandbook.com/heaps/",
-    "https://www.thedshandbook.com/graphs/",
-    "https://www.thedshandbook.com/hash-tables/"
-  ];
+List<NoteData> _noteData = [
+  NoteData(notesTitle: 'Arrays',notesLink: "https://www.thedshandbook.com/arrays/"),
+  NoteData(notesTitle: 'Linked list',notesLink: "https://www.thedshandbook.com/linked-lists/"),
+  NoteData(notesTitle: 'Stacks',notesLink: "https://www.thedshandbook.com/stacks/"),
+  NoteData(notesTitle: 'Queues',notesLink: "https://www.thedshandbook.com/queues/"),
+  NoteData(notesTitle: 'Trees',notesLink: "https://www.thedshandbook.com/trees/"),
+  NoteData(notesTitle: 'Heaps',notesLink: "https://www.thedshandbook.com/heaps/"),
+  NoteData(notesTitle: 'Graphs',notesLink: "https://www.thedshandbook.com/graphs/"),
+  NoteData(notesTitle: 'Hash Tables',notesLink: "https://www.thedshandbook.com/hash-tables/"),
+
+];
+
   final _scrollController = FixedExtentScrollController();
   static const double _itemHeight = 60;
   static const int _itemCount = 8;
@@ -47,7 +36,7 @@ class _NoteState extends State<Note> {
                   MaterialPageRoute(
                     builder: (context) => NotesPage(),
                     settings: RouteSettings(
-                      arguments: noteList[index],
+                      arguments: _noteData[index].notesLink,
                     ),
                   )
               );
@@ -76,7 +65,7 @@ class _NoteState extends State<Note> {
         ),
         child: ListTile(
           title: Text(
-            list[index],
+            _noteData[index].notesTitle,
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           leading: Icon(
