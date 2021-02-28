@@ -1,3 +1,4 @@
+import 'package:animated_splash/animated_splash.dart';
 import 'package:backdrop/backdrop.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
@@ -9,9 +10,14 @@ import 'Library Section/library.dart';
 import 'Notes Section/note.dart';
 
 void main() => runApp(MaterialApp(
-      home: MainPage(),
+      home: AnimatedSplash(
+        home: MainPage(),
+        imagePath: "assets/FixSplashImage.jpeg",
+        duration: 2500,
+      ),//MainPage(),
       debugShowCheckedModeBanner: false,
     ));
+
 
 class MyRoute {
   final IconData iconData;

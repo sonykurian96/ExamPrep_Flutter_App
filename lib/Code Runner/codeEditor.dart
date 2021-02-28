@@ -21,7 +21,8 @@ class _CodeEditorState extends State<CodeEditor> {
               initialUrl: "https://www.programiz.com/python-programming/online-compiler/" ,
               javascriptMode: JavascriptMode.unrestricted,
                   onWebViewCreated: (WebViewController webViewController) {
-                    controller = webViewController;}
+                    controller = webViewController;
+              }
             ),
               Container(
                 color: Colors.white,
