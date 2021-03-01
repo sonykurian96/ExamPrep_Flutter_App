@@ -1,5 +1,6 @@
 import 'package:clickable_list_wheel_view/clickable_list_wheel_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:wave_transition/wave_transition.dart';
 import "NotesPage.dart";
 import 'noteData.dart';
 
@@ -33,12 +34,13 @@ List<NoteData> _noteData = [
             onItemTapCallback: (index) {
               print("you tapped this $index");
               Navigator.push(context,
-                  MaterialPageRoute(
-                    builder: (context) => NotesPage(),
-                    settings: RouteSettings(
-                      arguments: _noteData[index].notesLink,
-                    ),
-                  )
+              WaveTransition(
+                child: NotesPage(),
+                center: FractionalOffset(0.5,0.5),
+                duration: Duration(milliseconds:3000),
+                settings: RouteSettings(arguments: _noteData[index].notesLink)
+              )
+                  
               );
             },
             child: ListWheelScrollView.useDelegate(

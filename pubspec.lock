@@ -252,6 +252,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0-nullsafety.3"
+  wave_transition:
+    dependency: "direct main"
+    description:
+      name: wave_transition
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.2"
   webview_media:
     dependency: transitive
     description:

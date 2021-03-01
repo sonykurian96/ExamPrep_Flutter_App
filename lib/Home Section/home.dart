@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wave_transition/wave_transition.dart';
 import 'pastPapers.dart';
 
 class Home extends StatefulWidget {
@@ -61,12 +62,21 @@ class _HomeState extends State<Home> {
                     onPressed: () {
                       Navigator.push(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) => Paper(),
-                            // settings: RouteSettings(
-                            //   arguments: videoList[index],
-                            // ),
-                          ));
+                          WaveTransition(
+                            child: Paper(),
+                           center: FractionalOffset(0.5,0.3),
+                           duration: Duration(milliseconds: 3000),
+                           settings: RouteSettings(
+                             arguments: "this means success!!!"
+                           )
+                           )
+                          // PageRouteBuilder(
+                          //   pageBuilder: (context,_,n) => Paper(),
+                          //   settings: RouteSettings(
+                          //     arguments: "this means success!!!"
+                          //   ),
+                          // )
+                          );
                     },
                     shape: new RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(30.0),

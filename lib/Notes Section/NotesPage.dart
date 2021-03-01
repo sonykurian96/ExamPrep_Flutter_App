@@ -16,6 +16,15 @@ class _NotesPageState extends State<NotesPage> {
 
     return Scaffold(
       appBar: AppBar(
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [Colors.orange[800], Colors.amber]
+              ),
+          ),
+        ),
         backgroundColor: Colors.orange[500],
         title: Text("Notes Section"),
         centerTitle: true,

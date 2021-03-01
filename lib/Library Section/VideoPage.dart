@@ -24,9 +24,8 @@ class _VideoPageState extends State<VideoPage> {
         .arguments; // fetches data from another page
 
     _controller = YoutubePlayerController(
-        initialVideoId:
-            YoutubePlayer.convertUrlToId(_data),
-            );
+      initialVideoId: YoutubePlayer.convertUrlToId(_data),
+    );
 
     return Scaffold(
       body: SafeArea(
@@ -37,12 +36,12 @@ class _VideoPageState extends State<VideoPage> {
                 YoutubePlayer(
                   controller: _controller,
                   progressIndicatorColor: Colors.amber,
-                  progressColors: ProgressBarColors(
-                    backgroundColor: Colors.amber
-                  ),
+                  progressColors:
+                      ProgressBarColors(backgroundColor: Colors.amber),
                   showVideoProgressIndicator: true,
                 ),
                 SizedBox(height: 5),
+                // DraggableScrollableSheet(builder: null)
                 Container(
                   width: MediaQuery.of(context).size.width, //350,
                   height: MediaQuery.of(context).size.height,

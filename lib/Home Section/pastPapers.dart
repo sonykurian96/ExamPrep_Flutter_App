@@ -5,6 +5,7 @@ import 'customwidget.dart';
 import 'data.dart';
 
 class Paper extends StatefulWidget {
+  
   @override
   _PaperState createState() => _PaperState();
 }
@@ -14,18 +15,17 @@ class _PaperState extends State<Paper> {
   final GlobalKey<ExpansionTileCardState> cardA = new GlobalKey();
 
   List<Data> _data = [
-    Data(question: "question1",answer: "answer1",link: "link1"),
-    Data(question: "question2",answer: "answer2",link: "link2"),
-    Data(question: "question3",answer: "answer3",link: "link3"),
-    Data(question: "question4",answer: "answer4",link: "link4"),
-    Data(question: "question5",answer: "answer5",link: "link5"),
-    Data(question: "question6",answer: "answer1",link: "link1"),
-    Data(question: "question7",answer: "answer2",link: "link2"),
-    Data(question: "question8",answer: "answer3",link: "link3"),
-    Data(question: "question9",answer: "answer4",link: "link4"),
-    Data(question: "question10",answer: "answer5",link: "link5"),
+    Data(question: "question1", answer: "answer1", link: "link1"),
+    Data(question: "question2", answer: "answer2", link: "link2"),
+    Data(question: "question3", answer: "answer3", link: "link3"),
+    Data(question: "question4", answer: "answer4", link: "link4"),
+    Data(question: "question5", answer: "answer5", link: "link5"),
+    Data(question: "question6", answer: "answer1", link: "link1"),
+    Data(question: "question7", answer: "answer2", link: "link2"),
+    Data(question: "question8", answer: "answer3", link: "link3"),
+    Data(question: "question9", answer: "answer4", link: "link4"),
+    Data(question: "question10", answer: "answer5", link: "link5"),
   ];
-
 
   Widget button() {
     return RaisedButton(
@@ -43,18 +43,27 @@ class _PaperState extends State<Paper> {
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
+    String _string = ModalRoute.of(context).settings.arguments;
+    print(_string);
     return Scaffold(
       appBar: AppBar(
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [Colors.orange[800], Colors.amber]),
+          ),
+        ),
         title: Text("Enjoy!!!"),
         centerTitle: true,
         backgroundColor: Colors.orange[500],
       ),
       body: ListView.builder(
-        itemCount: _data.length,
-          itemBuilder: (context,index){
+          itemCount: _data.length,
+          itemBuilder: (context, index) {
             return Custom(
               question: _data[index].question,
               answer: _data[index].answer,
@@ -62,9 +71,7 @@ class _PaperState extends State<Paper> {
               isVisible: displayAnswer,
               customRaisedButton: button(),
             );
-          }
-      ),
-
+          }),
     );
   }
 }

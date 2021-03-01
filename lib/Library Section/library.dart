@@ -1,6 +1,7 @@
 import 'package:clickable_list_wheel_view/clickable_list_wheel_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Library%20Section/videoData.dart';
+import 'package:wave_transition/wave_transition.dart';
 
 import 'VideoPage.dart';
 
@@ -38,13 +39,15 @@ class _VideoListState extends State<VideoList> {
             onItemTapCallback: (index) {
               print("you tapped this $index");
               Navigator.push(context,
-                MaterialPageRoute(
-                  builder: (context) => VideoPage(),
+                WaveTransition(
+                  child: VideoPage(), 
+                  center: FractionalOffset(0.5,0.5),
+                  duration: Duration(milliseconds: 3000),
                   settings: RouteSettings(
                   arguments: _videoData[index].videoLink,
                   ),
-                )
-              );
+                  )
+                );
             },
             child: ListWheelScrollView.useDelegate(
               itemExtent: _itemHeight,
