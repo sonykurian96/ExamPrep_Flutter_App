@@ -1,6 +1,7 @@
 import 'package:clickable_list_wheel_view/clickable_list_wheel_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/Library%20Section/videoData.dart';
+import 'package:ExamPrep/Library%20Section/videoData.dart';
+import 'package:ExamPrep/Notes%20Section/note.dart';
 import 'package:wave_transition/wave_transition.dart';
 
 import 'VideoPage.dart';
@@ -32,32 +33,37 @@ class _VideoListState extends State<VideoList> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        body: ClickableListWheelScrollView(
-            scrollController: _scrollController,
-            itemHeight: _itemHeight,
-            itemCount: _itemCount,
-            onItemTapCallback: (index) {
-              print("you tapped this $index");
-              Navigator.push(context,
-                WaveTransition(
-                  child: VideoPage(), 
-                  center: FractionalOffset(0.5,0.5),
-                  duration: Duration(milliseconds: 3000),
-                  settings: RouteSettings(
-                  arguments: _videoData[index].videoLink,
-                  ),
-                  )
-                );
-            },
-            child: ListWheelScrollView.useDelegate(
-              itemExtent: _itemHeight,
-              controller: _scrollController,
-              physics: FixedExtentScrollPhysics(),
-              childDelegate: ListWheelChildBuilderDelegate(
-                builder: (context, index) => _child(index),
-                childCount: _itemCount,
-              ),
-            )
+        body: Stack(
+                  children : [
+                    ContributeCard(),
+                    ClickableListWheelScrollView(
+              scrollController: _scrollController,
+              itemHeight: _itemHeight,
+              itemCount: _itemCount,
+              onItemTapCallback: (index) {
+                print("you tapped this $index");
+                Navigator.push(context,
+                  WaveTransition(
+                    child: VideoPage(), 
+                    center: FractionalOffset(0.5,0.5),
+                    duration: Duration(milliseconds: 3000),
+                    settings: RouteSettings(
+                    arguments: _videoData[index].videoLink,
+                    ),
+                    )
+                  );
+              },
+              child: ListWheelScrollView.useDelegate(
+                itemExtent: _itemHeight,
+                controller: _scrollController,
+                physics: FixedExtentScrollPhysics(),
+                childDelegate: ListWheelChildBuilderDelegate(
+                  builder: (context, index) => _child(index),
+                  childCount: _itemCount,
+                ),
+              )
+          ),
+                  ],
         )
     );
   }

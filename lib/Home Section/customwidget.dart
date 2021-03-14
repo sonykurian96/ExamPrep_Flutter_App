@@ -1,6 +1,6 @@
 import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/Library%20Section/VideoPage.dart';
+import 'package:ExamPrep/Library%20Section/VideoPage.dart';
 
 
 // ignore: must_be_immutable

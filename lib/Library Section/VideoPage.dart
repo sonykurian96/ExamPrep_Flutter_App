@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 //import 'library.dart';
@@ -33,15 +34,32 @@ class _VideoPageState extends State<VideoPage> {
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
-                YoutubePlayer(
+                 YoutubePlayer(
                   controller: _controller,
                   progressIndicatorColor: Colors.amber,
                   progressColors:
                       ProgressBarColors(backgroundColor: Colors.amber),
                   showVideoProgressIndicator: true,
                 ),
-                SizedBox(height: 5),
-                // DraggableScrollableSheet(builder: null)
+                SizedBox(height:3),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: 20.0,
+                  child: Shimmer.fromColors(
+                      baseColor: Colors.orange[800],
+                    highlightColor: Colors.amberAccent,
+                      child: Text(
+                        '<-- Ask doubts below -->',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                        fontSize: 20.0,
+                          fontWeight:
+                        FontWeight.bold,
+                                ),
+                              ),
+                        ),
+                  ), 
+
                 Container(
                   width: MediaQuery.of(context).size.width, //350,
                   height: MediaQuery.of(context).size.height,

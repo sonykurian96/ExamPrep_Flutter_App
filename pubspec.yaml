@@ -1,4 +1,4 @@
-name: flutter_app
+name: ExamPrep
 description: A new Flutter application.
 
 # The following line prevents the package from being accidentally published to
@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+1
+version: 1.0.4+1
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -33,9 +33,9 @@ dependencies:
   youtube_player_flutter: ^6.1.0+4
   backdrop: ^0.4.7
   flutter_speed_dial: ^1.2.5
-  expansion_card: ^0.1.0
   expansion_tile_card: ^1.1.0
   clickable_list_wheel_view: ^0.0.3
+  shimmer: ^1.1.2
   url_launcher: ^5.7.10
   wave_transition: ^0.0.2
 

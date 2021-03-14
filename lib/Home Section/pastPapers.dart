@@ -15,16 +15,16 @@ class _PaperState extends State<Paper> {
   final GlobalKey<ExpansionTileCardState> cardA = new GlobalKey();
 
   List<Data> _data = [
-    Data(question: "question1", answer: "answer1", link: "link1"),
-    Data(question: "question2", answer: "answer2", link: "link2"),
-    Data(question: "question3", answer: "answer3", link: "link3"),
-    Data(question: "question4", answer: "answer4", link: "link4"),
-    Data(question: "question5", answer: "answer5", link: "link5"),
-    Data(question: "question6", answer: "answer1", link: "link1"),
-    Data(question: "question7", answer: "answer2", link: "link2"),
-    Data(question: "question8", answer: "answer3", link: "link3"),
-    Data(question: "question9", answer: "answer4", link: "link4"),
-    Data(question: "question10", answer: "answer5", link: "link5"),
+    Data(question: "question1", answer: "answer1", link: "https://youtu.be/bum_19loj9A"),
+    Data(question: "question2", answer: "answer2", link: "https://youtu.be/bum_19loj9A"),
+    Data(question: "question3", answer: "answer3", link: "https://youtu.be/bum_19loj9A"),
+    Data(question: "question4", answer: "answer4", link: "https://youtu.be/bum_19loj9A"),
+    Data(question: "question5", answer: "answer5", link: "https://youtu.be/bum_19loj9A"),
+    Data(question: "question6", answer: "answer1", link: "https://youtu.be/bum_19loj9A"),
+    Data(question: "question7", answer: "answer2", link: "https://youtu.be/bum_19loj9A"),
+    Data(question: "question8", answer: "answer3", link: "https://youtu.be/bum_19loj9A"),
+    Data(question: "question9", answer: "answer4", link: "https://youtu.be/bum_19loj9A"),
+    Data(question: "question10", answer: "answer5", link: "https://youtu.be/bum_19loj9A"),
   ];
 
   Widget button() {
@@ -57,7 +57,7 @@ class _PaperState extends State<Paper> {
                 colors: [Colors.orange[800], Colors.amber]),
           ),
         ),
-        title: Text("Enjoy!!!"),
+        title: Text("Enjoy-->"),
         centerTitle: true,
         backgroundColor: Colors.orange[500],
       ),
