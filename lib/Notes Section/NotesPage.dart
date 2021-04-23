@@ -14,6 +14,8 @@ class _NotesPageState extends State<NotesPage> {
         .settings
         .arguments;
 
+    num _stackToView = 1;
+
     return Scaffold(
       appBar: AppBar(
         flexibleSpace: Container(
@@ -32,6 +34,9 @@ class _NotesPageState extends State<NotesPage> {
       body: WebView(
         initialUrl: _noteData,
         javascriptMode: JavascriptMode.unrestricted,
+        onPageFinished: (String url){
+          _stackToView = 0;
+        },
       ),
     );
   }

@@ -9,89 +9,102 @@ class CodeEditor extends StatefulWidget {
 
 class _CodeEditorState extends State<CodeEditor> {
   WebViewController controller;
+  num _stackToView = 1;
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
           backgroundColor: Colors.white,
-          body: Stack(
+          body: IndexedStack(
+            index: _stackToView,
             children :[
-              WebView(
-              initialUrl: "https://www.programiz.com/python-programming/online-compiler/" ,
-              javascriptMode: JavascriptMode.unrestricted,
-                  onWebViewCreated: (WebViewController webViewController) {
-
-                    controller = webViewController;
-              }
-            ),
-              Container(
-                color: Colors.white,
-                padding: EdgeInsets.fromLTRB(8, 2, 0, 0),
-                child: ListTile(
-                  leading: Icon(Icons.code),
-                  title: Text("\t"*10+"Online Compiler"),
-                ),
-              ),
-              Divider(
-                color: Colors.black,
-                height: 100,
-              ),
-              Container(
-                padding: EdgeInsets.fromLTRB(12, 62, 0, 0),
-                child: Icon(Icons.note,color: Colors.white,),
-              ),
-              SpeedDial(
-                // both default to 16
-                marginRight: 40,
-                marginBottom: 100,
-                animatedIcon: AnimatedIcons.menu_close,
-                animatedIconTheme: IconThemeData(size: 22.0),
-                closeManually: false,
-                curve: Curves.bounceIn,
-                overlayColor: Colors.black,
-                overlayOpacity: 0.5,
-                onOpen: () => print('OPENING DIAL'),
-                onClose: () => print('DIAL CLOSED'),
-                tooltip: 'Speed Dial',
-                heroTag: 'speed-dial-hero-tag',
-                backgroundColor: Colors.orange[500],
-                foregroundColor: Colors.white,
-                elevation: 18.0,
-                shape: CircleBorder(),
+              Stack(
                 children: [
-                  SpeedDialChild(
-                      child: Icon(Icons.code),
-                      backgroundColor: Colors.red,
-                      label: 'Python',
-                      labelStyle: TextStyle(fontSize: 18.0),
-                      onTap: () => setState((){
-                        controller.loadUrl("https://www.programiz.com/python-programming/online-compiler/");
-                      }),
+                  WebView(
+                    initialUrl: "https://www.programiz.com/python-programming/online-compiler/" ,
+                    javascriptMode: JavascriptMode.unrestricted,
+                    onWebViewCreated: (WebViewController webViewController) {
+                      controller = webViewController;
+                    },
+                    onPageFinished: (String url) {
+                      // should be called when page finishes loading
+                      setState(() {
+                        _stackToView = 0;
+                      });
+                    },
                   ),
-                  SpeedDialChild(
-                    child: Icon(Icons.code),
-                    backgroundColor: Colors.blue,
-                    label: 'C++',
-                    labelStyle: TextStyle(fontSize: 18.0),
-                    onTap: () => setState((){
-                      controller.loadUrl("https://www.programiz.com/cpp-programming/online-compiler/");
-                    }),
+                  Container(
+                    color: Colors.white,
+                    padding: EdgeInsets.fromLTRB(8, 2, 0, 0),
+                    child: ListTile(
+                      leading: Icon(Icons.code),
+                      title: Text("\t"*10+"Online Compiler"),
+                    ),
                   ),
-                  SpeedDialChild(
-                    child: Icon(Icons.code),
-                    backgroundColor: Colors.green,
-                    label: 'C',
-                    labelStyle: TextStyle(fontSize: 18.0),
-                    onTap: () => setState((){
-                      controller.loadUrl("https://www.programiz.com/c-programming/online-compiler/");
-                      }),
+                  Divider(
+                    color: Colors.black,
+                    height: 100,
+                  ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(12, 62, 0, 0),
+                    child: Icon(Icons.note,color: Colors.white,),
+                  ),
+                  SpeedDial(
+                    // both default to 16
+                    marginRight: 40,
+                    marginBottom: 100,
+                    animatedIcon: AnimatedIcons.menu_close,
+                    animatedIconTheme: IconThemeData(size: 22.0),
+                    closeManually: false,
+                    curve: Curves.bounceIn,
+                    overlayColor: Colors.black,
+                    overlayOpacity: 0.5,
+                    // onOpen: () => print('OPENING DIAL'),
+                    // onClose: () => print('DIAL CLOSED'),
+                    tooltip: 'Speed Dial',
+                    heroTag: 'speed-dial-hero-tag',
+                    backgroundColor: Colors.orange[500],
+                    foregroundColor: Colors.white,
+                    elevation: 18.0,
+                    shape: CircleBorder(),
+                    children: [
+                      SpeedDialChild(
+                        child: Icon(Icons.code),
+                        backgroundColor: Colors.red,
+                        label: 'Python',
+                        labelStyle: TextStyle(fontSize: 18.0),
+                        onTap: () => setState((){
+                          controller.loadUrl("https://www.programiz.com/python-programming/online-compiler/");
+                        }),
+                      ),
+                      SpeedDialChild(
+                        child: Icon(Icons.code),
+                        backgroundColor: Colors.blue,
+                        label: 'C++',
+                        labelStyle: TextStyle(fontSize: 18.0),
+                        onTap: () => setState((){
+                          controller.loadUrl("https://www.programiz.com/cpp-programming/online-compiler/");
+                        }),
+                      ),
+                      SpeedDialChild(
+                        child: Icon(Icons.code),
+                        backgroundColor: Colors.green,
+                        label: 'C',
+                        labelStyle: TextStyle(fontSize: 18.0),
+                        onTap: () => setState((){
+                          controller.loadUrl("https://www.programiz.com/c-programming/online-compiler/");
+                        }),
+                      ),
+                    ],
                   ),
                 ],
               ),
+              Container(child: Center(child: CircularProgressIndicator())),
           ],
           ),
         )
     );
   }
 }
+

@@ -40,7 +40,6 @@ class Note extends StatelessWidget {
         backgroundColor: Colors.white,
         body: Stack(
                   children : [
-                    ContributeCard(),
                     ClickableListWheelScrollView(
               scrollController: _scrollController,
               itemHeight: _itemHeight,
@@ -52,7 +51,7 @@ class Note extends StatelessWidget {
                     WaveTransition(
                         child: NotesPage(),
                         center: FractionalOffset(0.5, 0.5),
-                        duration: Duration(milliseconds: 3000),
+                        duration: Duration(milliseconds: 1500),
                         settings: RouteSettings(
                             arguments: _noteData[index].notesLink)));
               },

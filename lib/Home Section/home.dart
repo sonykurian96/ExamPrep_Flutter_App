@@ -35,9 +35,7 @@ class _HomeState extends State<Home> {
                     Icons.adjust,
                     color: Colors.orange[500],
                   ),
-                  onPressed: () {
-                    print("object");
-                  }),
+                  onPressed: () {}),
               title: Text("Sort Questions"),
               trailing: Switch(
                 value: isSwitched,
@@ -54,16 +52,17 @@ class _HomeState extends State<Home> {
             RaisedButton(
               textColor: Colors.white,
               color: Colors.orange[500],
-              child: Text("Let's Go"),
+              child: Text("Go"),
               onPressed: () {
                 Navigator.push(
-                    context,
-                    WaveTransition(
-                        child: Paper(),
-                        center: FractionalOffset(0.5, 0.3),
-                        duration: Duration(milliseconds: 3000),
-                        settings:
-                            RouteSettings(arguments: "this means success!!!")));
+                  context,
+                  WaveTransition(
+                    child: Paper(),
+                    center: FractionalOffset(0.5, 0.3),
+                    duration: Duration(milliseconds: 1500),
+                    settings: RouteSettings(arguments: [selectedRadio,isAscending]),
+                  ),
+                );
               },
               shape: new RoundedRectangleBorder(
                 borderRadius: new BorderRadius.circular(30.0),
@@ -119,7 +118,7 @@ class _HomeState extends State<Home> {
                       thickness: 1,
                     ),
                     ListTile(
-                      title: Text("Ascending order"),
+                      title: Text("Descending order"),
                       trailing: Switch(
                         value: isAscending,
                         onChanged: (value) {
