@@ -1,18 +1,58 @@
-import 'package:animated_splash/animated_splash.dart';
 import 'package:backdrop/backdrop.dart';
 import 'package:flutter/material.dart';
 import 'package:ExamPrep/Navigation Drawer/backlayer.dart';
 import 'package:ExamPrep/Navigation%20Drawer/bottom_navigation.dart';
+import 'package:flutter_login/flutter_login.dart';
 
 void main() => runApp(MaterialApp(
-      home: AnimatedSplash(
-        home: MainPage(),
-        imagePath: "assets/FixSplashImage.jpeg",
-        duration: 2500,
-      ), //MainPage(),
+      home: LoginScreen(),
       debugShowCheckedModeBanner: false,
-    ));
+    ),
+);
 
+class LoginScreen extends StatelessWidget {
+  Duration get loginTime => Duration(milliseconds: 2250);
+
+  Future<String> _authUser(LoginData data) {
+    print('Name: ${data.name}, Password: ${data.password}');
+    return Future.delayed(loginTime).then((_) {
+      return null;
+    });
+  }
+
+  Future<String> _recoverPassword(String name) {
+    print('Name: $name');
+    return Future.delayed(loginTime).then((_) {
+      return "This feature hasn't been developed yet";
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final inputBorder = BorderRadius.vertical(
+      bottom: Radius.circular(10.0),
+      top: Radius.circular(20.0),
+    );
+    return FlutterLogin(
+      title: 'ExamPrep',
+      // logo: 'assets/images/ecorp-lightblue.png',
+      onLogin: _authUser,
+      onSignup: _authUser,
+      onSubmitAnimationCompleted: () {
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (context) => MainPage(),
+        ));
+      },
+      onRecoverPassword: _recoverPassword,
+      theme: LoginTheme(
+        primaryColor: Colors.orange[600],
+        accentColor: Colors.white,
+        errorColor: Colors.deepOrange,
+        pageColorDark: Colors.amber[300],
+        ),
+    );
+  }
+}
 
 class MainPage extends StatefulWidget {
   @override

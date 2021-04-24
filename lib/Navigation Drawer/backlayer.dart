@@ -47,7 +47,7 @@ class BackLayer extends StatelessWidget {
                 "ExamPrep",
                 style: TextStyle(color: Colors.white),
               ),
-              subtitle: Text("v1.0.4", style: TextStyle(color: Colors.white70)),
+              subtitle: Text("v2.0.0(pre-release)", style: TextStyle(color: Colors.white70)),
             ),
             Text("""An app which provides everything needed to 
 crack exams with flying colours.""",

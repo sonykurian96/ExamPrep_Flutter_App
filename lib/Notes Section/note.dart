@@ -37,37 +37,55 @@ class Note extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        body: Stack(
-                  children : [
-                    ClickableListWheelScrollView(
-              scrollController: _scrollController,
-              itemHeight: _itemHeight,
-              itemCount: _itemCount,
-              onItemTapCallback: (index) {
-                print("you tapped this $index");
-                Navigator.push(
-                    context,
-                    WaveTransition(
-                        child: NotesPage(),
-                        center: FractionalOffset(0.5, 0.5),
-                        duration: Duration(milliseconds: 1500),
-                        settings: RouteSettings(
-                            arguments: _noteData[index].notesLink)));
-              },
-              child: ListWheelScrollView.useDelegate(
-                itemExtent: _itemHeight,
-                controller: _scrollController,
-                physics: FixedExtentScrollPhysics(),
-                childDelegate: ListWheelChildBuilderDelegate(
-                  builder: (context, index) => _child(index),
-                  childCount: _itemCount,
-                ),
+      backgroundColor: Colors.white,
+      body: Stack(
+        children: [
+          ClickableListWheelScrollView(
+            scrollController: _scrollController,
+            itemHeight: _itemHeight,
+            itemCount: _itemCount,
+            onItemTapCallback: (index) {
+              print("you tapped this $index");
+              Navigator.push(
+                  context,
+                  WaveTransition(
+                      child: NotesPage(),
+                      center: FractionalOffset(0.5, 0.5),
+                      duration: Duration(milliseconds: 1500),
+                      settings: RouteSettings(
+                          arguments: _noteData[index].notesLink)));
+            },
+            child: ListWheelScrollView.useDelegate(
+              itemExtent: _itemHeight,
+              controller: _scrollController,
+              physics: FixedExtentScrollPhysics(),
+              childDelegate: ListWheelChildBuilderDelegate(
+                builder: (context, index) => _child(index),
+                childCount: _itemCount,
               ),
-              ),
-            ],
-        ),
-        );
+            ),
+          ),
+          InkWell(
+            child: ContributeCard(),
+            onTap: (){
+              showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text("Oops!"),
+                      content: Text("This feature is in development"),
+                      actions: [
+                        FlatButton(onPressed: (){
+                          Navigator.pop(context);
+                        }, child: Text("OK"))
+                      ],
+                    );
+                  });
+            },
+          )
+        ],
+      ),
+    );
   }
 
   Widget _child(int index) {
@@ -95,23 +113,21 @@ class Note extends StatelessWidget {
 }
 
 class ContributeCard extends StatelessWidget {
- 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 20, 0, 5),
+      padding: const EdgeInsets.fromLTRB(30, 20, 0, 5),
       child: Card(
         color: Colors.white70,
         shadowColor: Colors.amber,
         elevation: 20,
         shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(25),
+          borderRadius: BorderRadius.circular(25),
         ),
-        child: Container(
-          width : 360,
-          height: 180,
+        child:Container(
+            child:Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkFkioFdejTMtMdBiNq6BhaIq0-ppuT1tP-g&usqp=CAU"),
         ),
-      ),
+        ),
     );
   }
 }
